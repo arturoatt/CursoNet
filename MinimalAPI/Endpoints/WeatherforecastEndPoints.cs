@@ -1,31 +1,31 @@
-﻿namespace MinimalAPI.Endpoints;
+﻿using MinimalAPI.DataLayer;
+
+namespace MinimalAPI.Endpoints;
 
 public static class WeatherforecastEndPoints
 {
 
     public static IEndpointRouteBuilder MapEndpoints(this IEndpointRouteBuilder app)
     {
-        var summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
-        app.MapGet("/weatherforecast", () =>
+
+        app.MapGet("/weatherforecast", (IBusiness _ibusiness, ILogger<Program> logger) =>
         {
-            var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-                .ToArray();
-            return forecast;
+            logger.LogInformation("Hola estoy weatherforecast");
+            return _ibusiness.Getweatherforecast();
         });
+
+        app.MapGet("/GetUsuarios", (ApplicationDbContext context) =>
+        {
+            return context.Usuarios.ToList();
+        });
+
+        app.MapGet("/GetRoles", (ApplicationDbContext context) =>
+        {
+            return context.Roles.ToList();
+        });
+
+
         return app;
     }
-}
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
