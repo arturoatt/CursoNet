@@ -1,0 +1,11 @@
+@Borrar_HostAddress = http://localhost:5210
+
+GET {{Borrar_HostAddress}}/todos/
+Accept: application/json
+
+###
+
+GET {{Borrar_HostAddress}}/todos/1
+Accept: application/json
+
+###

@@ -1,5 +1,21 @@
-﻿global using Microsoft.Data.SqlClient;
+﻿global using AutoMapper;
+global using FluentValidation;
+global using FluentValidation.Results;
+global using FluentValidation.Validators;
+global using Microsoft.Data.SqlClient;
+global using Microsoft.EntityFrameworkCore;
 global using MinimalAPI.BusinessLayer;
+global using MinimalAPI.BusinessLayer.Usuarios;
+global using MinimalAPI.DataDapperLayer;
+global using MinimalAPI.DataDapperLayer.ConnectionFactory;
+global using MinimalAPI.DataLayer;
+global using MinimalAPI.DataLayer.Usuarios;
+global using MinimalAPI.DTOs;
 global using MinimalAPI.Endpoints;
 global using MinimalAPI.Models;
+global using MinimalAPI.MyValidators;
+global using System.Collections.Generic;
 global using System.Data;
+global using System.Text.RegularExpressions;
+global using System.Threading.Tasks;
+

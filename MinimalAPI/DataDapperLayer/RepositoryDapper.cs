@@ -4,7 +4,7 @@ using MinimalAPI.DataDapperLayer.ConnectionFactory;
 
 namespace MinimalAPI.DataDapperLayer;
 
-public class RepositoryDapper : IRepository
+public class RepositoryDapper : IRepositoryDapper
 {
     private readonly IDbConnection _connection;
     private readonly ISqlConnectionFactory _factory;

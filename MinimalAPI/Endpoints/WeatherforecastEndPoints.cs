@@ -1,6 +1,4 @@
-﻿using MinimalAPI.DataLayer;
-
-namespace MinimalAPI.Endpoints;
+﻿namespace MinimalAPI.Endpoints;
 
 public static class WeatherforecastEndPoints
 {
@@ -15,17 +13,27 @@ public static class WeatherforecastEndPoints
             return _ibusiness.Getweatherforecast();
         });
 
-        app.MapGet("/GetUsuarios", (ApplicationDbContext context) =>
-        {
-            return context.Usuarios.ToList();
-        });
+        //app.MapGet("/GetUsuarios", (ApplicationDbContext context) =>
+        //{
+        //    return context.Usuarios.ToList();
+        //});
 
-        app.MapGet("/GetRoles", (ApplicationDbContext context) =>
-        {
-            return context.Roles.ToList();
-        });
+        //app.MapGet("/GetRoles", (ApplicationDbContext context) =>
+        //{
+        //    return context.Roles.ToList();
+        //});
+
+        //app.MapPost("/AddUsuario", (ApplicationDbContext context, Usuario dto) =>
+        //{
+        //    context.Usuarios.Add(dto);
+
+        //    //context.Roles.Add(dto.Roles);
+        //    //context.Usuarios.Update(dto);
 
 
+        //    context.SaveChanges();
+
+        //});
         return app;
     }
 }

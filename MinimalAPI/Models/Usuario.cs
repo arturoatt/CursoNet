@@ -1,4 +1,9 @@
 ﻿namespace MinimalAPI.Models;
 
-public record Usuario(int UsuarioId, string Nombre);
+public class Usuario
+{
+    public int UsuarioId { get; set; }
+
+    public string Nombre { get; set; }
+}
 
