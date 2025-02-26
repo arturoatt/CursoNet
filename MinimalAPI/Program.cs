@@ -1,7 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
 
-var uriAppSettings = "MySettings.json";
-builder.Configuration.AddJsonFile(uriAppSettings, false, true);
+//var uriAppSettings = "MySettings.json";
+//builder.Configuration.AddJsonFile(uriAppSettings, false, true);
+//builder.Services.AddHttpContextAccessor();
+//builder.Services.AddJwtServices();
+//builder.Services.AddLoggerServices(builder.Configuration);
+//builder.Logging.ClearProviders();
+//builder.Logging.AddSerilog(Log.Logger);
 
 // Add services to the container.
 builder.Services.AddScoped<IBusiness, Business>();
