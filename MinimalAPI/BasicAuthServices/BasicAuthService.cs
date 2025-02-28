@@ -3,7 +3,7 @@
 internal class BasicAuthService : IBasicAuthService
 {
     private readonly HttpContext _context;
-    private readonly ILogger _logger;
+    private readonly Microsoft.Extensions.Logging.ILogger _logger;
 
     public BasicAuthService(IHttpContextAccessor context, ILogger<BasicAuthService> logger)
         => (_context, _logger) = (context.HttpContext!, logger);

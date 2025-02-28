@@ -36,7 +36,7 @@ public static class DependencyInjection
                     {
                         OnAuthenticationFailed = context =>
                         {
-                            var logger = context.HttpContext.RequestServices.GetRequiredService<ILoggerFactory>().CreateLogger<ILogger>();
+                            var logger = context.HttpContext.RequestServices.GetRequiredService<ILoggerFactory>().CreateLogger<Microsoft.Extensions.Logging.ILogger>();
                             logger.LogCritical(context.Exception.Message);
 
                             return Task.CompletedTask;
@@ -58,7 +58,7 @@ public static class DependencyInjection
 
         services.AddAuthorization(opciones =>
         {
-            opciones.AddPolicy("administradores", policy => policy.RequireClaim("admin"));
+            opciones.AddPolicy("administradores", policy => policy.RequireClaim(ClaimTypes.Role, "admin"));
         });
 
         return services;

@@ -17,8 +17,7 @@ public class MyValidatorFilter<T> : IEndpointFilter where T : class
 
             if (!result.IsValid)
             {
-                throw new Exception(result.ToString());
-                //throw new BadRequestException(result.ToString());
+                throw new BadRequestException(result.ToString());
             }
         }
 

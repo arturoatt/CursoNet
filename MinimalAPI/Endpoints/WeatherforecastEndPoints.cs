@@ -12,7 +12,11 @@ public static class WeatherforecastEndPoints
             logger.LogInformation("Hola estoy weatherforecast");
             return _ibusiness.Getweatherforecast();
         });
-
+        app.MapGet("/stop", (IHostApplicationLifetime lifetime) =>
+        {
+            Task.Run(() => lifetime.StopApplication());
+            return "La aplicación se está deteniendo...";
+        });
         //app.MapGet("/GetUsuarios", (ApplicationDbContext context) =>
         //{
         //    return context.Usuarios.ToList();

@@ -18,7 +18,7 @@ public class JwtService : IJwtService
 
         // Crear el token con una duración
         var token = new JwtSecurityToken(
-            issuer: "MiAPIRest",
+            issuer: username,
             audience: "urls;claves;",
             claims: claims,
             expires: DateTime.Now.AddSeconds(10),

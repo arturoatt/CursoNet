@@ -1,22 +1,24 @@
 ﻿
 
+using Microsoft.AspNetCore.Authorization;
+
 namespace MinimalAPI.Endpoints;
 
 public static class UsuariosEndpoints
 {
     public static IEndpointRouteBuilder MapUsuarios(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/", async (ApplicationDbContext _context, IMapper _mapper) => _mapper.Map<IEnumerable<UsuarioDTO>>(await _context.Usuarios.ToListAsync()));
+        app.MapGet("/", [AllowAnonymous] async (ApplicationDbContext _context, IMapper _mapper) => _mapper.Map<IEnumerable<UsuarioDTO>>(await _context.Usuarios.ToListAsync()));
         //{
         //return await _context.Usuarios.ToListAsync();
         //return _mapper.Map<IEnumerable<UsuarioDTO>>(await _context.Usuarios.ToListAsync());
         //});
 
-        app.MapGet("/{id:int}", GetUsuarioID);
+        app.MapGet("/{id:int}", GetUsuarioID).AllowAnonymous();
 
         app.MapPut("/{id:int}", UpdateUsuario);
 
-        app.MapPost("/", AddUsuario).AddEndpointFilter<MyValidatorFilter<UsuarioDTO>>();
+        app.MapPost("/", AddUsuario).AddEndpointFilter<MyValidatorFilter<UsuarioDTO>>().RequireAuthorization("administradores"); ;
 
         app.MapDelete("/{id}", DeleteUsuario);
 

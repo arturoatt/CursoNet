@@ -7,7 +7,7 @@ public static class JwtEndpoints
     public static IEndpointRouteBuilder MapJwtEndpoints(this IEndpointRouteBuilder app)
     {
         // Endpoint de login para obtener un JWT        
-        app.MapPost("/token", Token);
+        app.MapPost("/logging", Token);
 
         return app;
     }
